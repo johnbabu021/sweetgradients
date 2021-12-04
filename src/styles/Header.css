@@ -46,3 +46,6 @@ color:inherit;
     background-color: var(--dark--color);
     color: white;
 }
+.theme{
+    cursor: pointer;
+}

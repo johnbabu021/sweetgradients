@@ -23,7 +23,7 @@ export default function Header(){
 <SearchIcon/>
 </div>
 <div    className="left__icons">
-    <div>{theme==='light'?<LightModeIcon     onClick={()=>{
+    <div    className="theme">{theme==='light'?<LightModeIcon     onClick={()=>{
         setTheme('dark')
         localStorage.setItem('theme','dark')
     }
