@@ -3,6 +3,46 @@ display: flex;
 justify-content: space-between;
 height: 4rem;
 align-items: center;
-padding-left:1em;
+position: sticky;
+top:0;
+background: white;
+padding:0   1em;
+box-shadow: 2px 2px 25px 0.4px rgba(0,0,0,0.2);
 
+}
+.github__logo{
+    text-decoration: none;
+color:inherit;
+}
+.search__input{
+    outline: none;
+    height: 40px;
+    width: 400px;
+    margin-left:3px;
+    border: none;
+}
+
+.search__container{
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    border-radius:10px;
+    padding: 2px    0;
+    border:1px  solid  rgb(167, 151, 151);
+
+}
+
+.left__icons{
+    display: flex;
+    flex:0.2;
+    align-items: center;
+    justify-content: space-between;
+}
+.light{
+    background-color: var(--light--color);
+}
+.dark{
+    background-color: var(--dark--color);
+    color: white;
 }

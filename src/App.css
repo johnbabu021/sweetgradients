@@ -1,0 +1,22 @@
+:root{
+    --dark--color:rgb(24, 19, 19);
+    --light--color:#fff;
+}
+::-webkit-scrollbar{
+    width:4px;
+}
+::-webkit-scrollbar-thumb{
+    background: blue;
+    border-radius:3px;
+
+}
+::-webkit-scrollbar-thumb:hover{
+background: rgb(20, 140, 156);
+}
+
+.light{
+    background-color: var(--light--color);
+}
+.dark{
+    background-color: var(--dark--color);
+}
