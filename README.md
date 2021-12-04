@@ -1,13 +1,13 @@
-### SWEETGRADIENTS
+# SWEETGRADIENTS
 
 
-#   Features
+###   Features
 * almost 300 gradients
 * framework ReactJS
 * dark and light modes
 
 
-# Installation
+### Installation
 1.Clone the repository
 
 ```bash
@@ -32,7 +32,7 @@ All set
 
 
 
-#   Contribution
+###   Contribution
 
 *   switch  to gradients.json
 ```bash
