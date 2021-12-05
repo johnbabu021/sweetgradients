@@ -5,19 +5,10 @@
 * 300 plus gradients
 * dark and light modes
 ![Group 1](https://user-images.githubusercontent.com/58719884/144737464-50f8a70c-9ca9-4903-b005-d702712d2cd9.png)
- <img
-      src="
-    
-https://github.com/johnbabu021/sweetgradients/blob/master/public/Group%201.svg
-    
-    
-    "
-      
-    
 
 ![Frame 1](https://user-images.githubusercontent.com/58719884/144732835-b1006b8a-ca24-464b-a669-6eb5a6be8d96.png)
 
-
+ <img src="https://github.com/johnbabu021/sweetgradients/blob/master/public/Group%201.svg" />
 
 ### Installation
 1.Clone the repository
