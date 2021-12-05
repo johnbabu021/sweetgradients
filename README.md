@@ -3,7 +3,6 @@
 
 ###   Features
 * 300 plus gradients
-* framework ReactJS
 * dark and light modes
 
 ![Frame 1](https://user-images.githubusercontent.com/58719884/144732835-b1006b8a-ca24-464b-a669-6eb5a6be8d96.png)
