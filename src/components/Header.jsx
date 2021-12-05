@@ -35,8 +35,12 @@ export default function Header(){
             
             }/>}</div>
 
+<div    className="flex"><a className={`github__logo    ${theme==='light'?'git_light':'git_dark'}`} href="https://github.com/johnbabu021/sweetgradients"><GitHubIcon/><span>star</span></a>
+<div    className="star">
+    345
+</div>
 
-<a className="github__logo" href="https://github.com/johnbabu021"><GitHubIcon/></a>
+</div>
 </div>
         </div>
     )
