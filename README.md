@@ -5,7 +5,7 @@
 * 300 plus gradients
 * dark and light modes
 
-<div style={"text-align:center'}>![Group 1](https://user-images.githubusercontent.com/58719884/144737464-50f8a70c-9ca9-4903-b005-d702712d2cd9.png)
+<div style={"text-align:center'}><img src="https://user-images.githubusercontent.com/58719884/144737464-50f8a70c-9ca9-4903-b005-d702712d2cd9.png)
 </div>
 
 
