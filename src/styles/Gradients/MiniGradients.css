@@ -13,6 +13,7 @@
 .gradient__container{
 width: 350px;
 cursor: pointer;
+border: transparent;
 margin:20px;
 display: grid;
 place-items:center;
@@ -20,4 +21,10 @@ color:white;
 font-size: 14px;
 height: 150px;
 border-radius: 5px;
+}
+
+.gradient__container:hover{
+    transform:scale(1.08);
+    transition: 0.4s    ease-in-out;
+    border:4px  solid   var(--border--color);
 }

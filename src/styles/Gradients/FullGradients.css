@@ -1,0 +1,8 @@
+.full__gradient{
+    width: 100vw;
+    height: 90vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}

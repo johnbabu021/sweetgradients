@@ -15,7 +15,7 @@ export default function Header(){
 
     return( 
         <div    className={`header  ${theme==='light'?'light':'dark'}`}>
-<img src="SWEETGRADIENTS.svg"  alt="" />
+<img    className="logo__sweet" src="SWEETGRADIENTS.svg"  alt="" />
 
 <div    className="search__container">
 
