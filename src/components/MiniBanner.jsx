@@ -20,7 +20,7 @@ return(
             key={item.name}   className="gradient__container" style={{backgroundImage:`linear-gradient(to right,${item.colors})`}}>
             {item.name}
                 </div>
-        )):<LargeBanner item={gradient}></LargeBanner>
+        )):<LargeBanner setBanner={setBanner} item={gradient}></LargeBanner>
     }
     </div>
 )

@@ -3,6 +3,55 @@
     height: 90vh;
     margin: 0;
     display: flex;
+    overflow-x: hidden;
     justify-content: center;
-    padding: 10px;
+    padding-top: 20px;
+    color:white;
+    overflow-y:hidden;
+}
+.gradient__header__flex{
+    display: flex;
+    padding-top:2px;
+    align-items: center;
+    gap:50px;
+    justify-content: space-between;
+}
+.grad__name{
+    flex:0.01;
+    font-size: 17px !important;
+    cursor: pointer;
+    color: var(--text--common--color);
+}
+.gradient__header__flex>.MuiSvgIcon-root{
+    font-size: 18px !important;
+    cursor: pointer;
+}
+.right__icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex:0.1;
+}
+
+.right__icons>.MuiSvgIcon-root  {
+ font-size: 30px    !important;   
+ cursor: pointer;
+padding: 0  6px;
+ border-right:1px    solid   gray;
+}
+.grad__name{
+    padding-left:40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+@media(max-width:450px){
+    .gradient__header__flex{
+        justify-content: flex-start;
+    }
+    .right__icons{
+        display: none;
+    }
 }
