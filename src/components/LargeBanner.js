@@ -10,6 +10,7 @@ import { useState } from 'react';
 const   LargeBanner=({setBanner,item})=>{
     const   [rotate,setRotate]=useState('to left')
     const   [length,setLength]=useState(1)
+    const   [code,setCode]=useState(false)
     const   gradientPath=[
         {location:'to left'},
         {location:'to right'},
@@ -39,7 +40,7 @@ const leftIcons=[
         },
         id:1
     },
-    {Icon:CodeIcon,id:2},
+    {Icon:CodeIcon,id:2,onClick:()=>{setCode(true)}},
     {Icon:AddIcon,id:3},
     {Icon:DownloadIcon,id:4}
 ]
@@ -55,9 +56,18 @@ const leftIcons=[
 
 </div>
 
- <div    className="full__gradient" style={{backgroundImage:`linear-gradient(${rotate},${item.colors})`}}>
+ <div    className={`full__gradient`} style={{backgroundImage:`linear-gradient(${rotate},${item.colors})`}}>
 {item.name}
+<div>{code&&(<div   className={`code__block`}>
+<p>Copy CSS code</p>
+<div    className="code__semiblock">
+    <p><span>background</span>:{item.colors[1]}</p>
+   <p><span>background</span>:-webkit-linear-gradient({rotate},{item.colors});</p>
+   <p><span>background</span>:linear-gradient({rotate},{item.colors})</p>
+</div>
+<button>click to copy</button>
 
+</div>)}</div>
         </div>
 
            </div>
