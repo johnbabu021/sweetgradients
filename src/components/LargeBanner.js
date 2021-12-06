@@ -23,14 +23,15 @@ const leftIcons=[
     {Icon:RotateRightIcon,onClick:()=>
         {
             if(length===gradientPath.length){
-                setRotate(gradientPath[0].location)
-                setLength(1)
+                setRotate(gradientPath[3].location)
+                setLength(0)
                
             }
             
 
             else{
             setLength(length+1)
+            console.log(length)
 
                 setRotate(gradientPath[length].location)
 
@@ -47,7 +48,7 @@ const leftIcons=[
 
 const   buttonClick={
     onClick:()=>{
-const   copyText=document.querySelector('.code__semiblock')
+// const   copyText=document.querySelector('.code__semiblock')
 
 
     }
