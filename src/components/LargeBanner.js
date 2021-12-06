@@ -22,7 +22,7 @@ const   LargeBanner=({setBanner,item})=>{
 const leftIcons=[
     {Icon:RotateRightIcon,onClick:()=>
         {
-            if(length===gradientPath.length-1){
+            if(length===gradientPath.length){
                 setRotate(gradientPath[0].location)
                 setLength(1)
                
