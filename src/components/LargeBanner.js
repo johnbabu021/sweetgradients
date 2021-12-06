@@ -44,6 +44,14 @@ const leftIcons=[
     {Icon:AddIcon,id:3},
     {Icon:DownloadIcon,id:4}
 ]
+
+const   buttonClick={
+    onClick:()=>{
+const   copyText=document.querySelector('.code__semiblock')
+
+
+    }
+}
     return(
        <div className="gradient__header">
 <div    className="gradient__header__flex">
@@ -65,7 +73,7 @@ const leftIcons=[
    <p><span>background</span>:-webkit-linear-gradient({rotate},{item.colors});</p>
    <p><span>background</span>:linear-gradient({rotate},{item.colors})</p>
 </div>
-<button>click to copy</button>
+<button {...buttonClick}>click to copy</button>
 
 </div>)}</div>
         </div>
