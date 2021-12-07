@@ -25,13 +25,12 @@ const leftIcons=[
             if(length===gradientPath.length){
                 setRotate(gradientPath[3].location)
                 setLength(0)
+              
                
             }
-            
-
+          
             else{
             setLength(length+1)
-            console.log(length)
 
                 setRotate(gradientPath[length].location)
 
