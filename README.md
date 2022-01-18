@@ -1,5 +1,5 @@
 # SWEETGRADIENTS
- <p align="center"><img src="https://github.com/johnbabu021/sweetgradients/blob/master/public/Group%201.svg" /></p>
+ <p align="center"><img src="https://github.com/johnbabu021/sweetgradients/blob/master/public/Group%201%20(1).png" /></p>
 
 ![Frame 1](https://user-images.githubusercontent.com/58719884/144732835-b1006b8a-ca24-464b-a669-6eb5a6be8d96.png)
 
