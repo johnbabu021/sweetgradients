@@ -121,8 +121,11 @@ padding: 0  6px;
 
 @media(max-width:450px){
     .gradient__header__flex{
-        justify-content: flex-start;
+        justify-content:space-between;
+        gap:0;
+
     }
+
     .right__icons{
         display: none;
     }
