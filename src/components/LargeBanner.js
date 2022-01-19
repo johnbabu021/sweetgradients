@@ -5,9 +5,11 @@ import CodeIcon from '@mui/icons-material/Code';
 import AddIcon from '@mui/icons-material/Add';
 import DownloadIcon from '@mui/icons-material/Download';
 import DocTitle from '../hooks/DocTitle';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const   LargeBanner=({setBanner,item})=>{
+
+   
     const   [rotate,setRotate]=useState('to left')
     const   [length,setLength]=useState(1)
     const   [code,setCode]=useState(false)
@@ -19,6 +21,9 @@ const   LargeBanner=({setBanner,item})=>{
       
       
     ]
+
+   
+
 const leftIcons=[
     {Icon:RotateRightIcon,onClick:()=>
         {
@@ -45,10 +50,45 @@ const leftIcons=[
     {Icon:DownloadIcon,id:4}
 ]
 
-const   buttonClick={
-    onClick:()=>{
-// const   copyText=document.querySelector('.code__semiblock')
+useEffect(()=>{
+    const   selectionArea=document.querySelector('.grad__name')
+    selectionArea.addEventListener('copy',(event)=>{
+        const       selection=document.getSelection()
+        event.clipboardData.setData('text/plain',`background
+        :linear-gradient(to left,${selection.toString()})`)
+        event.preventDefault()
+    })
+        },[item])
 
+const   buttonClick={
+    onClick:async(e)=>{
+// try{
+//     // const   copyText=document.querySelector('.code__semiblock').textContent
+//     // console.log(copyText)
+//     // e.clipboardData.setData('text/plain',copyText.toString())
+//     // e.preventDefault()
+//     await  navigator.clipboard.readText().then(
+//         (clipText) => document.querySelector(".code__semiblock").innerText)
+// // ClipboardEvent.clipboardData.setData('text/plain',data)
+// let newItem;
+//     await       navigator.clipboard.read().then((data)=>{
+//         console.log(data)
+
+//         for(let     i=0;i<data.length;i++){
+// data[i].getType('text/plain').then((item)=>{
+// newItem=URL.createObjectURL(item)
+// console.log(newItem)
+
+// })
+//         }
+//     })
+
+
+   
+// }
+// catch(e){
+//     console.log(e)
+// }
 
     }
 }
