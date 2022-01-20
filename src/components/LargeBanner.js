@@ -116,7 +116,7 @@ const   buttonClick={
             dispatch({type:'code',payload:false})
            },100)
           
-        navigator.clipboard.writeText(`background:${item.colors[1]};background:-webkit-linear-gradient(${state.rotate},${item.colors});background:linear-gradient(${state.rotate},${item.colors})`)
+        navigator.clipboard.writeText(`background:${item.colors[1]};background:-webkit-linear-gradient(${state.rotate},${item.colors});/* fallback for old browsers */background:linear-gradient(${state.rotate},${item.colors}); /* for new Browsers*/`)
 
     }
 }
@@ -137,23 +137,29 @@ DocTitle('SweetGradients')}}/>
 <div    className="right__icons">
 {leftIcons.map(({Icon,onClick,title},index)=>{   
      return  (
-         <Tooltip TransitionComponent={Fade} enterDelay={300} leaveDelay={50}  key={index}  title={title} ><Icon  onClick={onClick}></Icon>
+         <Tooltip TransitionComponent={Fade}
+          enterDelay={300} leaveDelay={50} 
+           key={index}  title={title} >
+               <Icon  onClick={onClick}></Icon>
      </Tooltip>
      )})}
 </div>
 
 </div>
 
- <div    className={`full__gradient`} style={{backgroundImage:`linear-gradient(${state.rotate},${item.colors})`}}>
+ <div    className={`full__gradient`} 
+ style={{backgroundImage:`linear-gradient(${state.rotate},${item.colors})`}}>
 {item.name}
 <div>{state.code&&(<div   className={`code__block`}>
 <p>Copy CSS code</p>
 <div    className="code__semiblock">
-    <p><span>background</span>:{item.colors[1]}</p>
-   <p><span>background</span>:-webkit-linear-gradient({state.rotate},{item.colors});</p>
-   <p><span>background</span>:linear-gradient({state.rotate},{item.colors})</p>
+    <p><span>background</span>:{item.colors[1]} </p>
+   <p><span>background</span>:-webkit-linear-gradient({state.rotate},{item.colors});<p>{' /* fallback for old Browsers */'}</p></p>
+   <p><span>background</span>:linear-gradient({state.rotate},{item.colors});<p>{ '/* fallback for new Browsers  */'}</p></p>
 </div>
-<Tooltip    TransitionComponent={Zoom} title={state.copyIt?'copied':'click to copy'}><button {...buttonClick}>click to copy</button>
+<Tooltip    TransitionComponent={Zoom} 
+title={state.copyIt?'copied':'click to copy'}>
+    <button {...buttonClick}>click to copy</button>
 </Tooltip>
 </div>)}</div>
         </div>

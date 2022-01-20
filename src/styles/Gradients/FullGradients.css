@@ -66,7 +66,7 @@ padding: 0  6px;
 
 }
 .code__block>p{
-    color:var(--text--common--color);
+    color:rgb(219, 121, 75);
 }
 
 
@@ -115,10 +115,12 @@ padding: 0  6px;
     background-color: #1e4d43c4;
 }
 .code__semiblock>p>span{
-    color: #2aa198!important;
+    color: #e654c1!important;
 }
 
-
+.code__semiblock>p>p{
+    color:#3d3d3d7c
+}
 @media(max-width:450px){
     .gradient__header__flex{
         justify-content:space-between;
