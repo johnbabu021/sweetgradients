@@ -41,24 +41,24 @@ const   LargeBanner=({setBanner,item})=>{
     }
 
 const       reducer=(state,action)=>{
- switch(action.type){
-   case 'rotate': return  {...state,rotate:action.payload};
-   case 'length': return  {...state,length:action.payload};
-   case 'code'  :return     {...state,code:action.payload};
-   case 'copyIt': return        {...state,copyIt:action.payload};
-   case 'copyUpper':return  {...state,copyUpper:action.payload}
-   default: return  {state}
-
- }
-
-
+    return{...state,...action}
 }
+//  switch(action.type){
+//    case 'rotate': return  {...state,rotate:action.payload};
+//    case 'length': return  {...state,length:action.payload};
+//    case 'code'  :return     {...state,code:action.payload};
+//    case 'copyIt': return        {...state,copyIt:action.payload};
+//    case 'copyUpper':return  {...state,copyUpper:action.payload}
+//    default: return  {state}
+
+//  }
+
+
+// }
 
 
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    
-  
     const   gradientPath=[
         {location:'to left'},
         {location:'to right'},
@@ -71,19 +71,23 @@ const       reducer=(state,action)=>{
    
 
 const leftIcons=[
-    {Icon:RotateRightIcon,onClick:()=>
+    {Icon:RotateRightIcon,onClick:async()=>
         {
-
             if(state.length===gradientPath.length-1){
-                dispatch({type:'rotate',payload:gradientPath[gradientPath.length-1].location})
-                dispatch({type:'length',payload:1})
+                dispatch({rotate:gradientPath[gradientPath.length-1].location})
+                dispatch({length:1})
               
                
             }
+            // else if(state.length===0){
+            //     dispatch({length:state.length+1})
+            //     dispatch({rotate:gradientPath[state.length+1].location})
+ 
+            // }
           
             else{
-           dispatch({type:'length',payload:state.length+1})
-                dispatch({type:'rotate',payload:gradientPath[state.length].location})
+           await    dispatch({length:state.length+1})
+                dispatch({rotate:gradientPath[state.length].location})
 
             }
          
@@ -93,7 +97,7 @@ const leftIcons=[
         
     },
     {Icon:CodeIcon,onClick:()=>{                        
-        dispatch({type:'code',payload:true})},title:'get css code'},
+        dispatch({code:true})},title:'get css code'},
     {Icon:AddIcon,title:'add new gradient',onClick:()=>{
 window.open('https://github.com/johnbabu021/sweetgradients/blob/master/README.md')    }},
     {Icon:DownloadIcon,title:'download image'}
@@ -111,9 +115,9 @@ useEffect(()=>{
 const   buttonClick={
     onClick:async()=>{
 
-           dispatch({type:'copyIt',payload:true})
+           dispatch({copyIt:true})
            setTimeout(()=>{
-            dispatch({type:'code',payload:false})
+            dispatch({code:false})
            },100)
           
         navigator.clipboard.writeText(`background:${item.colors[1]};background:-webkit-linear-gradient(${state.rotate},${item.colors});/* fallback for old browsers */background:linear-gradient(${state.rotate},${item.colors}); /* for new Browsers*/`)
@@ -128,7 +132,7 @@ const   buttonClick={
 DocTitle('SweetGradients')}}/>
 <Tooltip    title={!state.copyUpper?"copy css code":'copied'}>
 <div    className="grad__name"  onClick={()=>{
-    dispatch({type:'copyUpper',payload:true})
+    dispatch({copyUpper:true})
     navigator.clipboard.writeText(`background:${item.colors};`)}}>{item.colors.join('→')}
     </div>
 
@@ -154,8 +158,8 @@ DocTitle('SweetGradients')}}/>
 <p>Copy CSS code</p>
 <div    className="code__semiblock">
     <p><span>background</span>:{item.colors[1]} </p>
-   <p><span>background</span>:-webkit-linear-gradient({state.rotate},{item.colors});<p>{' /* fallback for old Browsers */'}</p></p>
-   <p><span>background</span>:linear-gradient({state.rotate},{item.colors});<p>{ '/* fallback for new Browsers  */'}</p></p>
+   <p><span>background</span>:-webkit-linear-gradient({state.rotate},{item.colors});<span>{' /* fallback for old Browsers */'}</span></p>
+   <p><span>background</span>:linear-gradient({state.rotate},{item.colors});<span>{ '/* fallback for new Browsers  */'}</span></p>
 </div>
 <Tooltip    TransitionComponent={Zoom} 
 title={state.copyIt?'copied':'click to copy'}>
