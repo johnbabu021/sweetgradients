@@ -11,6 +11,17 @@ import  Gradients from '../constants/gradients.json'
 
 //change    to  dark    mode    and light   mode
 export default function Header(){
+    const   [starCount,setStarCount]=useState(0)
+    useEffect(()=>{
+       const fetchData= async ()=>{
+       const    res= await   fetch('https://api.github.com/repos/johnbabu021/sweetgradients')
+const       data=await      res.json()
+setStarCount(data.stargazers_count)
+}
+fetchData()
+    },[starCount])
+    
+
     const    [input,setInput]=useState('')
 
     const   {theme,setTheme,setData}=useContext(themeContext)
@@ -48,7 +59,7 @@ setData(newArray)
 
 <div    className="flex"><a className={`github__logo    ${theme==='light'?'git_light':'git_dark'}`} href="https://github.com/johnbabu021/sweetgradients"><GitHubIcon/><span>star</span></a>
 <div    className="star">
-    345
+    {starCount}
 </div>
 
 </div>
