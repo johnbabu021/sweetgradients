@@ -94,7 +94,8 @@ const leftIcons=[
     },
     {Icon:CodeIcon,onClick:()=>{                        
         dispatch({type:'code',payload:true})},title:'get css code'},
-    {Icon:AddIcon,title:'add new gradient'},
+    {Icon:AddIcon,title:'add new gradient',onClick:()=>{
+window.open('https://github.com/johnbabu021/sweetgradients/blob/master/README.md')    }},
     {Icon:DownloadIcon,title:'download image'}
 ]
 
