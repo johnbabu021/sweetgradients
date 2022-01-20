@@ -14,9 +14,14 @@ export default function Header(){
     const   [starCount,setStarCount]=useState(0)
     useEffect(()=>{
        const fetchData= async ()=>{
-       const    res= await   fetch('https://api.github.com/repos/johnbabu021/sweetgradients')
-const       data=await      res.json()
-setStarCount(data.stargazers_count)
+           try{
+            const    res= await   fetch('https://api.github.com/repos/johnbabu021/sweetgradients')
+            const       data=await      res.json()
+            setStarCount(data.stargazers_count)
+           }
+       catch(err){
+           throw    new Error('Internal server Error'," " ,err)
+       }
 }
 fetchData()
     },[starCount])

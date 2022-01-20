@@ -9,11 +9,15 @@ const   MiniBanner=()=>{
     const [banner,setBanner]=useState('small')
     const [gradient,setGradient]=useState(null)
     const   [value,setValue]=useState('')
-
+    const    [load,setLoad]=useState(false)
+   
+setTimeout(()=>{
+setLoad(true)
+},3000)
 return(
 
     <div    className={`${banner==='small'&&'mini__banner'}`}>
-    {data.length!==0?
+    {(load)?data.length!==0?
     banner==='small'?
     data.map(item=>(
         <div          onClick={()=>{
@@ -26,7 +30,9 @@ onMouseOver={()=>{
 setValue(item.colors.join(' '))
 }}
 
-        key={item.name}   className="gradient__container" style={{backgroundImage:`linear-gradient(to right,${item.colors})`}}>
+        key={item.name}   
+        className="gradient__container" 
+        style={{backgroundImage:`linear-gradient(to right,${item.colors})`}}>
         {value===item.colors.join(' ')?value:item.name}
             </div>
     )):<LargeBanner setBanner={setBanner} item={gradient}></LargeBanner>:
@@ -49,6 +55,14 @@ width:'200px'
          src="404.svg"  alt="not found"/>
        </div>
        </div>
+       :( <div  className='loader'>
+  <div  className='loader_container'>
+  <div> </div>
+    <div> </div>
+    <div></div>
+      </div>
+       </div>
+       )
 }
     </div>
 )
