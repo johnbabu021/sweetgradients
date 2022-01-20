@@ -8,6 +8,8 @@ const   MiniBanner=()=>{
     const   {data}=useContext(themeContext)
     const [banner,setBanner]=useState('small')
     const [gradient,setGradient]=useState(null)
+    const   [value,setValue]=useState('')
+
 return(
 
     <div    className={`${banner==='small'&&'mini__banner'}`}>
@@ -18,9 +20,14 @@ return(
             setBanner('large');
             setGradient(item);
             DocTitle(item.name)
+            // navigator.clipboard.writeText(`background:${item.colors[1]};background:-webkit-linear-gradient(to left,${item.colors});background:linear-gradient({to left},${item.colors})`)
         }}
+onMouseOver={()=>{
+setValue(item.colors.join(' '))
+}}
+
         key={item.name}   className="gradient__container" style={{backgroundImage:`linear-gradient(to right,${item.colors})`}}>
-        {item.name}
+        {value===item.colors.join(' ')?value:item.name}
             </div>
     )):<LargeBanner setBanner={setBanner} item={gradient}></LargeBanner>:
    <div style={{

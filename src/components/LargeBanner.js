@@ -5,14 +5,60 @@ import CodeIcon from '@mui/icons-material/Code';
 import AddIcon from '@mui/icons-material/Add';
 import DownloadIcon from '@mui/icons-material/Download';
 import DocTitle from '../hooks/DocTitle';
-import { useEffect, useState } from 'react';
-
+import { Tooltip } from '@mui/material';
+import { useEffect } from 'react';
+import { useReducer } from 'react';
+import Zoom from '@mui/material/Zoom';
+import Fade from '@mui/material/Fade';
+// import { Box, ThemeProvider, createTheme } from '@mui/system';
+// const theme = createTheme({
+//     palette: {
+//       background: {
+//         paper: '#fff',
+//       },
+//       text: {
+//         primary: '#173A5E',
+//         secondary: '#46505A',
+//       },
+//       action: {
+//         active: '#001E3C',
+//       },
+//       success: {
+//         dark: '#009688',
+//       },
+//     },
+//   });
 const   LargeBanner=({setBanner,item})=>{
 
-   
-    const   [rotate,setRotate]=useState('to left')
-    const   [length,setLength]=useState(1)
-    const   [code,setCode]=useState(false)
+
+    const   initialState={
+        rotate:'to left',
+        length:0,
+        code:false,
+        copyIt:false,
+        copyUpper:false,
+       
+    }
+
+const       reducer=(state,action)=>{
+ switch(action.type){
+   case 'rotate': return  {...state,rotate:action.payload};
+   case 'length': return  {...state,length:action.payload};
+   case 'code'  :return     {...state,code:action.payload};
+   case 'copyIt': return        {...state,copyIt:action.payload};
+   case 'copyUpper':return  {...state,copyUpper:action.payload}
+   default: return  {state}
+
+ }
+
+
+}
+
+
+    const [state, dispatch] = useReducer(reducer, initialState);
+
+    
+  
     const   gradientPath=[
         {location:'to left'},
         {location:'to right'},
@@ -27,27 +73,29 @@ const   LargeBanner=({setBanner,item})=>{
 const leftIcons=[
     {Icon:RotateRightIcon,onClick:()=>
         {
-            if(length===gradientPath.length){
-                setRotate(gradientPath[3].location)
-                setLength(0)
+
+            if(state.length===gradientPath.length-1){
+                dispatch({type:'rotate',payload:gradientPath[gradientPath.length-1].location})
+                dispatch({type:'length',payload:1})
               
                
             }
           
             else{
-            setLength(length+1)
-
-                setRotate(gradientPath[length].location)
+           dispatch({type:'length',payload:state.length+1})
+                dispatch({type:'rotate',payload:gradientPath[state.length].location})
 
             }
          
             
         },
-        id:1
+        title:'rotate'
+        
     },
-    {Icon:CodeIcon,id:2,onClick:()=>{setCode(true)}},
-    {Icon:AddIcon,id:3},
-    {Icon:DownloadIcon,id:4}
+    {Icon:CodeIcon,onClick:()=>{                        
+        dispatch({type:'code',payload:true})},title:'get css code'},
+    {Icon:AddIcon,title:'add new gradient'},
+    {Icon:DownloadIcon,title:'download image'}
 ]
 
 useEffect(()=>{
@@ -59,65 +107,56 @@ useEffect(()=>{
         event.preventDefault()
     })
         },[item])
-
 const   buttonClick={
-    onClick:async(e)=>{
-// try{
-//     // const   copyText=document.querySelector('.code__semiblock').textContent
-//     // console.log(copyText)
-//     // e.clipboardData.setData('text/plain',copyText.toString())
-//     // e.preventDefault()
-//     await  navigator.clipboard.readText().then(
-//         (clipText) => document.querySelector(".code__semiblock").innerText)
-// // ClipboardEvent.clipboardData.setData('text/plain',data)
-// let newItem;
-//     await       navigator.clipboard.read().then((data)=>{
-//         console.log(data)
+    onClick:async()=>{
 
-//         for(let     i=0;i<data.length;i++){
-// data[i].getType('text/plain').then((item)=>{
-// newItem=URL.createObjectURL(item)
-// console.log(newItem)
-
-// })
-//         }
-//     })
-
-
-   
-// }
-// catch(e){
-//     console.log(e)
-// }
+           dispatch({type:'copyIt',payload:true})
+           setTimeout(()=>{
+            dispatch({type:'code',payload:false})
+           },100)
+          
+        navigator.clipboard.writeText(`background:${item.colors[1]};background:-webkit-linear-gradient(${state.rotate},${item.colors});background:linear-gradient(${state.rotate},${item.colors})`)
 
     }
 }
     return(
        <div className="gradient__header">
 <div    className="gradient__header__flex">
-<CloseIcon  onClick={()=>{setBanner('small');DocTitle('SweetGradients')}}/>
-<div    className="grad__name">{item.colors.join('→')}</div>
+<CloseIcon  onClick={()=>{
+    setBanner('small');
+DocTitle('SweetGradients')}}/>
+<Tooltip    title={!state.copyUpper?"copy css code":'copied'}>
+<div    className="grad__name"  onClick={()=>{
+    dispatch({type:'copyUpper',payload:true})
+    navigator.clipboard.writeText(`background:${item.colors};`)}}>{item.colors.join('→')}
+    </div>
+
+</Tooltip>
 
 <div    className="right__icons">
-{leftIcons.map(({Icon,onClick,id})=>(<Icon key={id}  onClick={onClick}></Icon>))}
+{leftIcons.map(({Icon,onClick,title},index)=>{   
+     return  (
+         <Tooltip TransitionComponent={Fade} enterDelay={300} leaveDelay={50}  key={index}  title={title} ><Icon  onClick={onClick}></Icon>
+     </Tooltip>
+     )})}
 </div>
 
 </div>
 
- <div    className={`full__gradient`} style={{backgroundImage:`linear-gradient(${rotate},${item.colors})`}}>
+ <div    className={`full__gradient`} style={{backgroundImage:`linear-gradient(${state.rotate},${item.colors})`}}>
 {item.name}
-<div>{code&&(<div   className={`code__block`}>
+<div>{state.code&&(<div   className={`code__block`}>
 <p>Copy CSS code</p>
 <div    className="code__semiblock">
     <p><span>background</span>:{item.colors[1]}</p>
-   <p><span>background</span>:-webkit-linear-gradient({rotate},{item.colors});</p>
-   <p><span>background</span>:linear-gradient({rotate},{item.colors})</p>
+   <p><span>background</span>:-webkit-linear-gradient({state.rotate},{item.colors});</p>
+   <p><span>background</span>:linear-gradient({state.rotate},{item.colors})</p>
 </div>
-<button {...buttonClick}>click to copy</button>
-
+<Tooltip    TransitionComponent={Zoom} title={state.copyIt?'copied':'click to copy'}><button {...buttonClick}>click to copy</button>
+</Tooltip>
 </div>)}</div>
         </div>
-
+   
            </div>
 
     )

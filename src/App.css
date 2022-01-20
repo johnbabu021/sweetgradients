@@ -9,12 +9,13 @@
     width:4px;
 }
 ::-webkit-scrollbar-thumb{
-    background: blue;
+    background: #6c7986;
     border-radius:3px;
 
 }
 ::-webkit-scrollbar-thumb:hover{
-background: rgb(20, 140, 156);
+background: #646c74;
+
 }
 
 .light{
