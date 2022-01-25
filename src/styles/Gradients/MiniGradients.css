@@ -1,6 +1,8 @@
 
 .mini__banner{
     display: flex;
+    min-height: 100vh;
+
     flex-wrap: wrap;
     justify-content: space-between;
     align-content: center;
