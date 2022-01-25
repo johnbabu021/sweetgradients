@@ -109,6 +109,8 @@ window.open('https://github.com/johnbabu021/sweetgradients/blob/master/README.md
     {Icon:DownloadIcon,title:'download image',
 onClick:()=>{
 const       canvas=document.createElement('canvas')
+canvas.height='1000'
+canvas.width="2000"
 const   ctx=canvas.getContext('2d')
 
 const   grd=ctx.createLinearGradient(0,0,170,0)
@@ -116,7 +118,9 @@ grd.addColorStop(0,item.colors[0])
 grd.addColorStop(1,item.colors[1])
 ctx.fillStyle=grd
 ctx.fillRect(0,0,2000,2000)
+
 const   a=document.createElement('a')
+// console.log(a)
 // document.body.append(a)
 a.href=canvas.toDataURL("image/png")
 a.download=`${item.name}.png`
