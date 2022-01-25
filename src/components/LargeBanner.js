@@ -107,23 +107,44 @@ const leftIcons=[
     {Icon:AddIcon,title:'add new gradient',onClick:()=>{
 window.open('https://github.com/johnbabu021/sweetgradients/blob/master/README.md')    }},
     {Icon:DownloadIcon,title:'download image',
-onClick:()=>{
+onClick:(e)=>{
+// const       downloadOptions=document.createElement('h1')
+// const   gradientParent=document.querySelector('.full__gradient')
+// downloadOptions.textContent="hello"
+
+// downloadOptions.style={
+//     color:'white',
+//     right:'0',
+//     backgroundColor:'red',
+//     top:'0',
+//     position:'fixed'
+// }
+// gradientParent.appendChild(downloadOptions)
+
 const       canvas=document.createElement('canvas')
-canvas.height='1000'
+canvas.height='2000'
 canvas.width="2000"
 const   ctx=canvas.getContext('2d')
 
-const   grd=ctx.createLinearGradient(0,0,170,0)
-grd.addColorStop(0,item.colors[0])
-grd.addColorStop(1,item.colors[1])
+const   grd=ctx.createLinearGradient(0,0,950,0)
+item.colors.map((color,index)=>{
+    // if(index<=1)
+    grd.addColorStop(index/2,color)
+    // if(index===2)
+    // grd.addColorStop(0.35,color)
+})
+
 ctx.fillStyle=grd
-ctx.fillRect(0,0,2000,2000)
+ctx.fillRect(100,100,1500,1500)
 
 const   a=document.createElement('a')
-// console.log(a)
-// document.body.append(a)
 a.href=canvas.toDataURL("image/png")
 a.download=`${item.name}.png`
+a.click()
+
+// console.log(a)
+// document.body.append(a)
+
 
 // a.addEventListener('click',(e)=>{
 
@@ -131,7 +152,6 @@ a.download=`${item.name}.png`
 // })
 // a.download=canvas.toDataURL()
 // console.log(a)
-a.click()
 
 }
 
