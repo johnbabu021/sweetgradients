@@ -127,12 +127,12 @@ canvas.width="2000"
 const   ctx=canvas.getContext('2d')
 
 const   grd=ctx.createLinearGradient(0,0,950,0)
-item.colors.map((color,index)=>{
+item.colors.map((color,index)=>
     // if(index<=1)
     grd.addColorStop(index/2,color)
     // if(index===2)
     // grd.addColorStop(0.35,color)
-})
+)
 
 ctx.fillStyle=grd
 ctx.fillRect(100,100,1500,1500)
