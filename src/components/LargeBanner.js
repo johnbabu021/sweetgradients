@@ -106,7 +106,32 @@ const leftIcons=[
         dispatch({code:true})},title:'get css code'},
     {Icon:AddIcon,title:'add new gradient',onClick:()=>{
 window.open('https://github.com/johnbabu021/sweetgradients/blob/master/README.md')    }},
-    {Icon:DownloadIcon,title:'download image'}
+    {Icon:DownloadIcon,title:'download image',
+onClick:()=>{
+const       canvas=document.createElement('canvas')
+const   ctx=canvas.getContext('2d')
+
+const   grd=ctx.createLinearGradient(0,0,170,0)
+grd.addColorStop(0,item.colors[0])
+grd.addColorStop(1,item.colors[1])
+ctx.fillStyle=grd
+ctx.fillRect(0,0,2000,2000)
+const   a=document.createElement('a')
+// document.body.append(a)
+a.href=canvas.toDataURL("image/png")
+a.download=`${item.name}.png`
+
+// a.addEventListener('click',(e)=>{
+
+    // e.target.href=canvas.toDataURL()
+// })
+// a.download=canvas.toDataURL()
+// console.log(a)
+a.click()
+
+}
+
+}
 ]
 
 useEffect(()=>{

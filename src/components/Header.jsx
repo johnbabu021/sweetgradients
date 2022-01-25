@@ -30,10 +30,23 @@ export default function Header(){
 }
 fetchData()
     },[starCount])
+    const       [fullScreen,setFullScreen]=useState(false)
+
     
+    // useEffect(()=>{
+    //     if(document.fullscreenElement){
+    //         console.log('not on fullscreen')
+    //         const    exitMode=()=>{
+    //          setFullScreen(false)
+         
+    //         }
+         
+    //         exitMode()
+    //      }
+    // },[fullScreen])
 
     const    [input,setInput]=useState('')
-    const       [fullScreen,setFullScreen]=useState(false)
+
 
     const   {theme,setTheme,setData}=useContext(themeContext)
 
