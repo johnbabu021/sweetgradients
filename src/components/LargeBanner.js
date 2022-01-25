@@ -30,6 +30,12 @@ import Fade from '@mui/material/Fade';
 //   });
 const   LargeBanner=({setBanner,item})=>{
 
+document.addEventListener('keydown',(e)=>{
+if(e.key==="Escape"){
+    setBanner('small')
+}
+})
+
 
     const   initialState={
         rotate:'to left',
