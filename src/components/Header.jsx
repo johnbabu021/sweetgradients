@@ -14,6 +14,9 @@ import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 //change    to  dark    mode    and light   mode
 export default function Header(){
     const   [starCount,setStarCount]=useState(0)
+
+
+
     useEffect(()=>{
        const fetchData= async ()=>{
            try{
@@ -43,6 +46,13 @@ return  dataItem.includes(input.toLowerCase())
     })
 setData(newArray)
 },[input,setData])
+document.addEventListener('keydown',(e)=>{
+   const        search=   document.querySelector('.search__input')
+  
+        search.focus()
+
+    
+})
     return( 
         <div    className={`header  ${theme==='light'?'light':'dark'}`}>
 <img    className="logo__sweet" src="SWEETGRADIENTS.svg"  alt="" />

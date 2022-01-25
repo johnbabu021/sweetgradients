@@ -1,1 +1,1 @@
-export  const   search="search..."
+export  const   search="type to search"
