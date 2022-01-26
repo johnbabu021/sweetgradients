@@ -127,9 +127,10 @@ canvas.width="2000"
 const   ctx=canvas.getContext('2d')
 
 const   grd=ctx.createLinearGradient(0,0,950,0)
-item.colors.map((color,index)=>
+item.colors.map((color,index,grads)=>
     // if(index<=1)
-    grd.addColorStop(index/2,color)
+    // console.log(index,grads.length)
+    grd.addColorStop(index/(grads.length-1),color)
     // if(index===2)
     // grd.addColorStop(0.35,color)
 )
