@@ -1,0 +1,17 @@
+{
+    "name":"sweetgradients",
+    "short_name":"sweet Grads",
+    "description":"gradients app with 300 plus combos",
+    "icons":[
+        {
+            "src":"/public/Group 1.png",
+            "sizes":"32x32",
+            "type":"image/png"
+        }
+        
+        ],
+        "start_url":"/sweetgradients/index.html",
+        "display":"fullscreen",
+        "theme_color":"#0fa781",
+        "background_color":"#fff"
+}
