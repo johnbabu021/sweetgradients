@@ -10,6 +10,8 @@ import { useEffect } from 'react';
 import { useReducer } from 'react';
 import Zoom from '@mui/material/Zoom';
 import Fade from '@mui/material/Fade';
+import toast, { Toaster } from 'react-hot-toast';
+import CheckIcon from '@mui/icons-material/Check';
 // import { Box, ThemeProvider, createTheme } from '@mui/system';
 // const theme = createTheme({
 //     palette: {
@@ -175,7 +177,27 @@ const   buttonClick={
            setTimeout(()=>{
             dispatch({code:false})
            },100)
-          
+          toast.custom(<div style={{
+              background:"#fff",
+              borderRadius:"10px",
+              padding:"10px",
+              color:"green",
+              display:"flex",
+              alignItems:"center",
+              marginBottom:"10px"
+        }}>copied to clipboard<CheckIcon
+        style={{
+            color:"green",
+            marginLeft:"5px",
+            backgroundColor:"white",
+            boxShadow:"2px 2px 25px rgba(0,0,0,0.8)",
+            borderRadius:"50%"
+        }}
+        /></div>,{
+              duration:100,
+              position:'bottom-right',
+              
+            })
         navigator.clipboard.writeText(`background:${item.colors[1]};background:-webkit-linear-gradient(${state.rotate},${item.colors});/* fallback for old browsers */background:linear-gradient(${state.rotate},${item.colors}); /* for new Browsers*/`)
 
     }
@@ -223,8 +245,13 @@ title={state.copyIt?'copied':'click to copy'}>
 </Tooltip>
 </div>)}</div>
         </div>
-   
-           </div>
+        <Toaster
+  containerStyle={{
+
+    bottom: 0,
+    right: 20,
+  }}
+/>           </div>
 
     )
 }
